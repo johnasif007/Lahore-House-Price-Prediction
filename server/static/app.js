@@ -30,8 +30,11 @@ function onClickedEstimatePrice() {
   var estPrice = document.getElementById("uiEstimatedPrice");
 
   // URL of your Python Flask Server
-  var url = "http://127.0.0.1:5000/predict_home_price";
+// CHANGED THIS:
+// var url = "http://127.0.0.1:5000/predict_home_price"; 
 
+// TO THIS:
+var url = "/predict_home_price";
   // Use jQuery POST to send data to the backend
   $.post(url, {
       total_sqft: parseFloat(marla.value), // Sending Marla count as the 'Area'
@@ -52,8 +55,12 @@ function onClickedEstimatePrice() {
 // 4. ON PAGE LOAD: Automatically populates the location dropdown
 function onPageLoad() {
   console.log("Document loaded, fetching locations...");
-  var url = "http://127.0.0.1:5000/get_location_names";
+// CHANGED THIS:
+// var url = "http://127.0.0.1:5000/get_location_names"; 
 
+// TO THIS:
+var url = "/get_location_names";
+  
   $.get(url, function(data, status) {
       console.log("Got response for get_location_names");
       if(data) {
@@ -71,4 +78,5 @@ function onPageLoad() {
 }
 
 // Call onPageLoad when the browser window opens
+
 window.onload = onPageLoad;
